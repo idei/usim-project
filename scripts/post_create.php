@@ -1,6 +1,6 @@
 <?php
 const GITHUB_FOLDER = '.github';
-const USIM_INSTRUCTIONS_FILE = 'copilot_instructions.md';
+const USIM_INSTRUCTIONS_FILE = 'copilot-instructions.md';
 const USIM_FRAMEWORK_REPOSITORY_URL = 'https://raw.githubusercontent.com/idei/usim-project/refs/heads/main/.github/';
 
 function run($cmd) {
