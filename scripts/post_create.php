@@ -1,7 +1,7 @@
 <?php
 const GITHUB_FOLDER = '.github';
-const USIM_FRAMEWORK_REPOSITORY_URL = 'https://github.com/idei/usim-framework';
 const USIM_INSTRUCTIONS_FILE = 'copilot_instructions.md';
+const USIM_FRAMEWORK_REPOSITORY_URL = 'https://raw.githubusercontent.com/idei/usim-project/refs/heads/main/.github/';
 
 function run($cmd) {
     echo "\n> $cmd\n";
@@ -12,9 +12,7 @@ function run($cmd) {
 function getCopilotInstructions() {
     $usimFrameworkRepositoryUrl = USIM_FRAMEWORK_REPOSITORY_URL;
     $instructionsUrl = $usimFrameworkRepositoryUrl .
-        '/blob/main/' .
-        GITHUB_FOLDER . '/' .
-        USIM_INSTRUCTIONS_FILE . '?raw=true';
+        USIM_INSTRUCTIONS_FILE;
     echo "Fetching USIM Copilot instructions from oficial repository\n";
     $markdown = file_get_contents($instructionsUrl);
     if ($markdown === false) {
