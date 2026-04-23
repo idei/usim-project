@@ -23,6 +23,11 @@ function getCopilotInstructions() {
 }
 
 function saveInstructionsToFile($markdown) {
+    // Ensure .github directory exists
+    if (!is_dir(GITHUB_FOLDER)) {
+        mkdir(GITHUB_FOLDER, 0755, true);
+    }
+    echo "Current folder: " . getcwd() . "\n";
     $filename = GITHUB_FOLDER . '/' . USIM_INSTRUCTIONS_FILE;
     file_put_contents($filename, $markdown);
     echo "Instructions saved to $filename\n";
