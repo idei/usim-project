@@ -12,14 +12,14 @@ RUN apt-get update && \
 ENV LANG=es_ES.UTF-8
 ENV LC_ALL=es_ES.UTF-8
 
-# Instala PHP 8.3 y extensiones comunes para Laravel, incluyendo SQLite
+# Instala PHP 8.5 y extensiones comunes para Laravel, incluyendo SQLite
 RUN apt-get update && \
     apt-get install -y software-properties-common tzdata ca-certificates gnupg && \
     add-apt-repository ppa:ondrej/php -y && \
     apt-get update && \
     apt-get install -y \
-        php8.3 php8.3-cli php8.3-mbstring php8.3-xml php8.3-bcmath php8.3-curl php8.3-zip \
-        php8.3-sqlite3 php8.3-pdo php8.3-pdo-mysql php8.3-gd php8.3-intl php8.3-readline \
+        php8.5 php8.5-cli php8.5-mbstring php8.5-xml php8.5-bcmath php8.5-curl php8.5-zip \
+        php8.5-sqlite3 php8.5-pdo php8.5-pdo-mysql php8.5-gd php8.5-intl php8.5-readline \
         openssl curl git unzip composer \
         # Herramientas de red y diagnóstico
         iputils-ping \
