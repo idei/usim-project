@@ -44,10 +44,24 @@ if (!file_exists('.env')) {
 // key
 run("php artisan key:generate");
 
+
+
 run("composer require idei/usim -W");
 
 // Install USIM dependencies and publish assets
 run("php artisan usim:install");
+
+// Install Spatie Laravel-Permission
+run("composer require spatie/laravel-permission --no-interaction");
+run('php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider" --no-interaction');
+
+// Enable teams support in permission config
+$permissionConfigFile = 'config/permission.php';
+$permissionConfig = file_get_contents($permissionConfigFile);
+$permissionConfig = str_replace("'teams' => false,", "'teams' => true,", $permissionConfig);
+$permissionConfig = str_replace("'team_foreign_key' => 'team_id',", "'team_foreign_key' => 'usim_unit_id',", $permissionConfig);
+file_put_contents($permissionConfigFile, $permissionConfig);
+echo "Teams support enabled in $permissionConfigFile\n";
 
 // Fetch and save Copilot instructions
 $markdown = getCopilotInstructions();
