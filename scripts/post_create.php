@@ -56,16 +56,16 @@ $permissionConfig = str_replace("'team_foreign_key' => 'team_id',", "'team_forei
 file_put_contents($permissionConfigFile, $permissionConfig);
 echo "Teams support enabled in $permissionConfigFile\n";
 
-// Install USIM dependencies and publish assets
-run("composer require idei/usim -W");
-run("php artisan usim:install");
-
 // Remove default User.php model
 $userModelFile = 'app/Models/User.php';
 if (file_exists($userModelFile)) {
     unlink($userModelFile);
     echo "Default User model removed: $userModelFile\n";
 }
+
+// Install USIM dependencies and publish assets
+run("composer require idei/usim -W");
+run("php artisan usim:install");
     
 // Fetch and save Copilot instructions
 $markdown = getCopilotInstructions();
